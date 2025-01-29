@@ -50,37 +50,46 @@ const RegisterPage = () => {
             <Grid container spacing={2} my={1}>
               <Grid item md={12}>
                 <TextField
-                  id="outlined-basic"
-                  label="Outlined"
-                  variant="outlined"
-                />
-                ;
-              </Grid>
-              <Grid item md={6}>
-                <TextField
-                  id="outlined-basic"
-                  label="Outlined"
+                  label="Name"
+                  type="text"
+                  size="small"
+                  fullWidth={true}
                   variant="outlined"
                 />
               </Grid>
               <Grid item md={6}>
                 <TextField
-                  id="outlined-basic"
-                  label="Outlined"
+                  label="Email"
+                  type="text"
+                  size="small"
+                  fullWidth={true}
                   variant="outlined"
                 />
               </Grid>
               <Grid item md={6}>
                 <TextField
-                  id="outlined-basic"
-                  label="Outlined"
+                  label="Password"
+                  type="text"
+                  size="small"
+                  fullWidth={true}
                   variant="outlined"
                 />
               </Grid>
               <Grid item md={6}>
                 <TextField
-                  id="outlined-basic"
-                  label="Outlined"
+                  label="Contact Number"
+                  type="text"
+                  size="small"
+                  fullWidth={true}
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item md={6}>
+                <TextField
+                  label="Address"
+                  type="text"
+                  size="small"
+                  fullWidth={true}
                   variant="outlined"
                 />
               </Grid>

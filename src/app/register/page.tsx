@@ -1,6 +1,15 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import Image from "next/image";
 import assets from "@/assets";
+import Link from "next/link";
 
 const RegisterPage = () => {
   return (
@@ -37,7 +46,58 @@ const RegisterPage = () => {
               </Typography>
             </Box>
           </Stack>
-          <Box></Box>
+          <Box>
+            <Grid container spacing={2} my={1}>
+              <Grid item md={12}>
+                <TextField
+                  id="outlined-basic"
+                  label="Outlined"
+                  variant="outlined"
+                />
+                ;
+              </Grid>
+              <Grid item md={6}>
+                <TextField
+                  id="outlined-basic"
+                  label="Outlined"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item md={6}>
+                <TextField
+                  id="outlined-basic"
+                  label="Outlined"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item md={6}>
+                <TextField
+                  id="outlined-basic"
+                  label="Outlined"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item md={6}>
+                <TextField
+                  id="outlined-basic"
+                  label="Outlined"
+                  variant="outlined"
+                />
+              </Grid>
+            </Grid>
+            <Button
+              sx={{
+                margin: "10px 0px",
+              }}
+              fullWidth={true}
+              type="submit"
+            >
+              Register
+            </Button>
+            <Typography component="p" fontWeight={300}>
+              Do you already have an account? <Link href="/login">Login</Link>
+            </Typography>
+          </Box>
         </Box>
       </Stack>
     </Container>

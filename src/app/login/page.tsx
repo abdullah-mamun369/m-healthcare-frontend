@@ -13,6 +13,9 @@ import Image from "next/image";
 import assets from "@/assets";
 import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { userLogin } from "@/services/actions/userLogin";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 type TPatientData = {
   email: string;
@@ -20,6 +23,8 @@ type TPatientData = {
 };
 
 const LoginPage = () => {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -27,23 +32,18 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<TPatientData>();
 
-  const onSubmit: SubmitHandler<TPatientData> = (values) => {
-    console.log(values);
+  const onSubmit: SubmitHandler<TPatientData> = async (values) => {
+    try {
+      const res = await userLogin(values);
+      console.log(res);
 
-    // const data = modifyPayload(values);
-    // console.log(data);
-
-    // try {
-    //   const res = await registerPatient(data);
-    //   // console.log(res);
-
-    //   if (res?.data?.id) {
-    //     toast.success(res?.message);
-    //     router.push("/login");
-    //   }
-    // } catch (error: any) {
-    //   console.error(error.message);
-    // }
+      if (res?.success === true) {
+        toast.success(res?.message);
+        router.push("/");
+      }
+    } catch (error: any) {
+      toast.error(error.message);
+    }
   };
 
   return (

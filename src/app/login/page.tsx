@@ -67,7 +67,7 @@ const LoginPage = () => {
                 />
               </Grid>
             </Grid>
-            <Typography textAlign="end" component="p" fontWeight={300}>
+            <Typography mb={1} textAlign="end" component="p" fontWeight={300}>
               <Link href="/register">Forgot Password?</Link>
             </Typography>
             <Button

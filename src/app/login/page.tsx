@@ -16,8 +16,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { userLogin } from "@/services/actions/userLogin";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { storeUserInfo } from "@/services/actions/auth.services";
 
-type TPatientData = {
+type TLoginData = {
   email: string;
   password: string;
 };
@@ -30,12 +31,16 @@ const LoginPage = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<TPatientData>();
+  } = useForm<TLoginData>();
 
-  const onSubmit: SubmitHandler<TPatientData> = async (values) => {
+  const onSubmit: SubmitHandler<TLoginData> = async (values) => {
     try {
       const res = await userLogin(values);
       console.log(res);
+
+      if (res?.data?.accessToken) {
+        storeUserInfo({ accessToken: res?.data?.accessToken });
+      }
 
       if (res?.success === true) {
         toast.success(res?.message);

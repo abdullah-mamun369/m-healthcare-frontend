@@ -20,7 +20,7 @@ const HeroSection = () => {
             top: "-120px",
           }}
         >
-          <Image src={assets.svgs.grid} alt="doctor1" />
+          <Image src={assets.svgs.grid} alt="doctor1" priority />
         </Box>
         <Typography variant="h2" component="h1" fontWeight={600}>
           Healthier Hearts
@@ -65,7 +65,13 @@ const HeroSection = () => {
             top: "-30px",
           }}
         >
-          <Image src={assets.svgs.arrow} width={100} height={100} alt="arrow" />
+          <Image
+            src={assets.svgs.arrow}
+            width={100}
+            height={100}
+            alt="arrow"
+            priority
+          />
         </Box>
         <Box
           sx={{

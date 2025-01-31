@@ -12,28 +12,18 @@ import {
 import Image from "next/image";
 import assets from "@/assets";
 import Link from "next/link";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { userLogin } from "@/services/actions/userLogin";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/actions/auth.services";
-
-type TLoginData = {
-  email: string;
-  password: string;
-};
+import PHForm from "@/components/Forms/PHForm";
+import PHInput from "@/components/Forms/PHInput";
 
 const LoginPage = () => {
   const router = useRouter();
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<TLoginData>();
-
-  const onSubmit: SubmitHandler<TLoginData> = async (values) => {
+  const onSubmit = async (values: FieldValues) => {
     try {
       const res = await userLogin(values);
       if (res?.data?.accessToken) {
@@ -81,26 +71,22 @@ const LoginPage = () => {
             </Box>
           </Stack>
           <Box>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <PHForm onSubmit={onSubmit}>
               <Grid container spacing={2} my={1}>
                 <Grid item md={6}>
-                  <TextField
+                  <PHInput
+                    name="email"
                     label="Email"
                     type="text"
-                    size="small"
                     fullWidth={true}
-                    variant="outlined"
-                    {...register("email")}
                   />
                 </Grid>
                 <Grid item md={6}>
-                  <TextField
+                  <PHInput
+                    name="password"
                     label="Password"
                     type="text"
-                    size="small"
                     fullWidth={true}
-                    variant="outlined"
-                    {...register("password")}
                   />
                 </Grid>
               </Grid>
@@ -116,7 +102,7 @@ const LoginPage = () => {
               >
                 Login
               </Button>
-            </form>
+            </PHForm>
             <Typography component="p" fontWeight={300}>
               Don&apos;t have an account?{" "}
               <Typography color="primary" component="span">

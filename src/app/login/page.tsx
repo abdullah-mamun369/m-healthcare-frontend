@@ -36,14 +36,9 @@ const LoginPage = () => {
   const onSubmit: SubmitHandler<TLoginData> = async (values) => {
     try {
       const res = await userLogin(values);
-      console.log(res);
-
       if (res?.data?.accessToken) {
-        storeUserInfo({ accessToken: res?.data?.accessToken });
-      }
-
-      if (res?.success === true) {
         toast.success(res?.message);
+        storeUserInfo({ accessToken: res?.data?.accessToken });
         router.push("/");
       }
     } catch (error: any) {

@@ -12,10 +12,11 @@ type TFormProps = {
 
 const PHForm = ({ children, onSubmit }: TFormProps) => {
   const methods = useForm();
-  const { handleSubmit } = methods;
+  const { handleSubmit, reset } = methods;
 
   const submit: SubmitHandler<FieldValues> = (data) => {
     onSubmit(data);
+    reset();
   };
 
   return (

@@ -23,7 +23,7 @@ import PHInput from "@/components/Forms/PHInput";
 const LoginPage = () => {
   const router = useRouter();
 
-  const onSubmit = async (values: FieldValues) => {
+  const handleLogin = async (values: FieldValues) => {
     try {
       const res = await userLogin(values);
       if (res?.data?.accessToken) {
@@ -71,22 +71,22 @@ const LoginPage = () => {
             </Box>
           </Stack>
           <Box>
-            <PHForm onSubmit={onSubmit}>
+            <PHForm onSubmit={handleLogin}>
               <Grid container spacing={2} my={1}>
                 <Grid item md={6}>
                   <PHInput
                     name="email"
                     label="Email"
-                    type="text"
                     fullWidth={true}
+                    required={true}
                   />
                 </Grid>
                 <Grid item md={6}>
                   <PHInput
                     name="password"
                     label="Password"
-                    type="text"
                     fullWidth={true}
+                    required={true}
                   />
                 </Grid>
               </Grid>

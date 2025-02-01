@@ -22,9 +22,9 @@ const Footer = () => {
 
         <Stack direction="row" gap={2} justifyContent="center" py={3}>
           <Image src={facebookIcon} width={30} height={30} alt="facebook" />
-          <Image src={instagramIcon} width={30} height={30} alt="facebook" />
-          <Image src={twitterIcon} width={30} height={30} alt="facebook" />
-          <Image src={linkedIcon} width={30} height={30} alt="facebook" />
+          <Image src={instagramIcon} width={30} height={30} alt="instagram" />
+          <Image src={twitterIcon} width={30} height={30} alt="twiter" />
+          <Image src={linkedIcon} width={30} height={30} alt="linkedin" />
         </Stack>
         <Box
           sx={{

@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import assets from "@/assets";
 import Link from "next/link";
-import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+import { FieldValues } from "react-hook-form";
 import { userLogin } from "@/services/actions/userLogin";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -21,14 +21,17 @@ import PHForm from "@/components/Forms/PHForm";
 import PHInput from "@/components/Forms/PHInput";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 
 export const validationSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
-  password: z.string().min(5, "Password must be at least 5 characters long"),
+  password: z.string().min(5, "Password must be at least 5 characters"),
 });
 
 const LoginPage = () => {
   const router = useRouter();
+
+  const [error, setError] = useState("");
 
   const handleLogin = async (values: FieldValues) => {
     try {
@@ -37,6 +40,8 @@ const LoginPage = () => {
         toast.success(res?.message);
         storeUserInfo({ accessToken: res?.data?.accessToken });
         router.push("/");
+      } else {
+        setError(res?.message);
       }
     } catch (error: any) {
       toast.error(error.message);
@@ -77,27 +82,25 @@ const LoginPage = () => {
               </Typography>
             </Box>
           </Stack>
+          {error && (
+            <Box>
+              <Typography color="error" component="p" fontWeight={700}>
+                {error}
+              </Typography>
+            </Box>
+          )}
           <Box>
             <PHForm
               onSubmit={handleLogin}
               resolver={zodResolver(validationSchema)}
+              defaultValues={{ email: "", password: "" }}
             >
               <Grid container spacing={2} my={1}>
                 <Grid item md={6}>
-                  <PHInput
-                    name="email"
-                    label="Email"
-                    fullWidth={true}
-                    required={true}
-                  />
+                  <PHInput name="email" label="Email" fullWidth={true} />
                 </Grid>
                 <Grid item md={6}>
-                  <PHInput
-                    name="password"
-                    label="Password"
-                    fullWidth={true}
-                    required={true}
-                  />
+                  <PHInput name="password" label="Password" fullWidth={true} />
                 </Grid>
               </Grid>
               <Typography mb={1} textAlign="end" component="p" fontWeight={300}>

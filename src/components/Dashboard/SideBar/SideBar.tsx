@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, List, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import assets from "@/assets";
@@ -41,10 +43,12 @@ const SideBar = () => {
           PH Health Care
         </Typography>
       </Stack>
+
       <List>
-        {drawerItems(userRole as UserRole).map((item, index) => (
-          <SidebarItem key={index} item={item} />
-        ))}
+        {userRole &&
+          drawerItems(userRole.toLowerCase() as UserRole).map((item, index) => (
+            <SidebarItem key={index} item={item} />
+          ))}
       </List>
     </Box>
   );

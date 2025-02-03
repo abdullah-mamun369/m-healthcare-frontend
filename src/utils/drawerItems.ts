@@ -6,7 +6,6 @@ import GroupIcon from "@mui/icons-material/Group";
 import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ReviewsIcon from "@mui/icons-material/Reviews";
-import AirlineSeatIndividualSuiteIcon from "@mui/icons-material/AirlineSeatIndividualSuite";
 import TryIcon from "@mui/icons-material/Try";
 import { USER_ROLE } from "@/constant/role";
 

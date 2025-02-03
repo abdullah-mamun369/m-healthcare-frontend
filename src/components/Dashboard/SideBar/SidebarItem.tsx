@@ -28,6 +28,9 @@ const SidebarItem = ({ item }: IProps) => {
                 "& svg": {
                   color: "#1586FD",
                 },
+                "& .MuiListItemText-primary": {
+                  color: "#1586FD", // This targets the text color of the selected item
+                },
               }
             : {}),
           mb: 1,

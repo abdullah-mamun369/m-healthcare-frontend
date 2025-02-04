@@ -18,6 +18,7 @@ const SpecialtiesPage = () => {
 
   const handleDelete = async (id: string) => {
     try {
+      console.log("delete running");
       const res = await deleteSpecialty(id).unwrap();
       if (res?.id) {
         toast.success("Specialty deleted successfully!!!");

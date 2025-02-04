@@ -1,4 +1,4 @@
-import { authKey } from "@/constant/authkey";
+import { authKey } from "@/contants/authkey";
 import { decodedToken } from "@/utils/jwt";
 import {
   getFromLocalStorage,

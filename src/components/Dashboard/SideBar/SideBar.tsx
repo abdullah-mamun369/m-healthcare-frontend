@@ -7,7 +7,7 @@ import Link from "next/link";
 import { drawerItems } from "@/utils/drawerItems";
 import { UserRole } from "@/types";
 import { useEffect, useState } from "react";
-import { getUserInfo } from "@/services/actions/auth.services";
+import { getUserInfo } from "@/services/auth.services";
 import SidebarItem from "./SidebarItem";
 
 const SideBar = () => {

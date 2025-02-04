@@ -34,9 +34,16 @@ const SpecialtiesPage = () => {
       field: "icon",
       headerName: "Icon",
       flex: 1,
+
       renderCell: ({ row }) => {
         return (
-          <Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
             <Image src={row.icon} width={30} height={30} alt="icon" />
           </Box>
         );
@@ -48,6 +55,7 @@ const SpecialtiesPage = () => {
       flex: 1,
       headerAlign: "center",
       align: "center",
+
       renderCell: ({ row }) => {
         return (
           <IconButton onClick={() => handleDelete(row.id)} aria-label="delete">
